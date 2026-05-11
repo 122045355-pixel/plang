@@ -8,9 +8,7 @@ app = ctk.CTk()
 def reglametoredirect(ventana,nueva):
     ventana.destroy()
     nueva()
-def quiz1redirect(ventana):
-    ventana.destroy()
-    quiz1()
+
 
 def inforeglamento():
     reglamento = ctk.CTkToplevel(app)
@@ -76,7 +74,7 @@ def inforeglamento():
     boton = ctk.CTkButton(
         reglamento,
         text="continuar al quiz",
-        command=lambda: quiz1redirect(reglamento)
+        command=lambda: reglametoredirect(reglamento, quiz1)
     )
     boton.pack(pady=15)
     
@@ -119,7 +117,7 @@ def porcentajes():
     boton = ctk.CTkButton(
         porcentajes,
         text="Continuar",
-        command=porcentajes.destroy
+        command=lambda: reglametoredirect(porcentajes, quiz2)
     )
 
     boton.pack(pady=20)
@@ -172,6 +170,73 @@ def ventanaFracaso():
 
     imagen = ctk.CTkImage(
         light_image=Image.open("Fracaso.jpg"),
+        size=(200, 200)
+    )
+
+    label_imagen = ctk.CTkLabel(
+        ventanaFracaso,
+        text="",
+        image=imagen
+    )
+    label_imagen.pack(pady=20)
+
+    boton = ctk.CTkButton(
+    ventanaFracaso,
+    text="Aceptar",
+    command=lambda:
+    reglametoredirect(
+        ventanaFracaso,
+        inforeglamento
+    )
+    )
+    boton.pack(pady=20)
+def ventanaAprobado2():
+
+    ventanaAprobado = ctk.CTkToplevel(app)
+    ventanaAprobado.geometry("400x400")
+    ventanaAprobado.title("felicidades")
+
+    texto = ctk.CTkLabel(
+        ventanaAprobado,
+        text="felicidades, aprobaste el quiz, tus padres deben sentirse orullosos :,D",
+        font=("Arial", 20)
+    )
+    texto.pack(pady=20)
+
+    imagen = ctk.CTkImage(
+        light_image=Image.open("exito.jpg"),
+        size=(200, 200)
+    )
+
+    label_imagen = ctk.CTkLabel(
+        ventanaAprobado,
+        text="",
+        image=imagen
+    )
+    label_imagen.pack(pady=20)
+
+    boton = ctk.CTkButton(
+    ventanaAprobado,
+    text="Aceptar",
+    command=lambda: reglametoredirect(ventanaAprobado, abrir_ventana3)
+    )
+    boton.pack(pady=20)
+
+def ventanaFracaso2():
+
+    ventanaFracaso = ctk.CTkToplevel(app)
+    ventanaFracaso.geometry("400x400")
+    ventanaFracaso.title("efe en el chat")
+
+    texto = ctk.CTkLabel(
+        ventanaFracaso,
+        text="fracasaste el quiz, llegaste mas lejos animo :DDD",
+        font=("Arial", 20)
+    )
+    texto.pack(pady=20)
+
+    imagen = ctk.CTkImage(
+        light_image=Image.open("hulk.jpg"),
         size=(200, 200)
     )
 
@@ -477,6 +542,146 @@ def abrir_ventana3():
     command=lambda: reglametoredirect(ventana3,porcentajes)
     )
     boton.pack(pady=20)
+def verificar_respuesta2(
+    quiz,
+    respuesta1,
+    respuesta2,
+    respuesta3,
+):
+
+    correctas = 0
+
+    if respuesta1 == "40%":
+        correctas += 1
+
+    if respuesta2 == "50%":
+        correctas += 1
+
+    if respuesta3 == "30%":
+        correctas += 1
+
+    if correctas < 2:
+        reglametoredirect(quiz, ventanaFracaso2)
+    else:
+        reglametoredirect(quiz, ventanaAprobado2)
+
+
+def quiz2():
+
+    quiz = ctk.CTkToplevel(app)
+    quiz.geometry("700x900")
+    quiz.title("Quiz sobre porcentajes")
+
+    titulo = ctk.CTkLabel(
+        quiz,
+        text="Quiz sobre porcentajes de evaluación",
+        font=("Arial", 28, "bold")
+    )
+    titulo.pack(pady=20)
+
+    
+    pregunta1 = "¿Cuánto vale la evidencia de conocimiento en el 1P?"
+
+    label1 = ctk.CTkLabel(
+        quiz,
+        text=pregunta1,
+        font=("Arial", 20)
+    )
+    label1.pack(pady=10)
+
+    respuesta1 = ctk.StringVar(value="")
+
+    opciones1 = [
+        "10%",
+        "20%",
+        "30%",
+        "40%"
+    ]
+
+    for opcion in opciones1:
+
+        radio = ctk.CTkRadioButton(
+            quiz,
+            text=opcion,
+            variable=respuesta1,
+            value=opcion
+        )
+
+        radio.pack(pady=5)
+
+    
+    pregunta2 = "¿Cuánto vale el proyecto integrador en el 3P?"
+
+    label2 = ctk.CTkLabel(
+        quiz,
+        text=pregunta2,
+        font=("Arial", 20)
+    )
+    label2.pack(pady=20)
+
+    respuesta2 = ctk.StringVar(value="")
+
+    opciones2 = [
+        "10%",
+        "20%",
+        "30%",
+        "50%"
+    ]
+
+    for opcion in opciones2:
+
+        radio = ctk.CTkRadioButton(
+            quiz,
+            text=opcion,
+            variable=respuesta2,
+            value=opcion
+        )
+
+        radio.pack(pady=5)
+
+    
+    pregunta3 = "¿Cuánto vale la evidencia de producto en el 2P?"
+
+    label3 = ctk.CTkLabel(
+        quiz,
+        text=pregunta3,
+        font=("Arial", 20)
+    )
+    label3.pack(pady=20)
+
+    respuesta3 = ctk.StringVar(value="")
+
+    opciones3 = [
+        "10%",
+        "20%",
+        "30%",
+        "40%"
+    ]
+
+    for opcion in opciones3:
+
+        radio = ctk.CTkRadioButton(
+            quiz,
+            text=opcion,
+            variable=respuesta3,
+            value=opcion
+        )
+
+        radio.pack(pady=5)
+
+    verificar = ctk.CTkButton(
+        quiz,
+        text="Verificar Quiz",
+        command=lambda:
+        verificar_respuesta2(
+            quiz,
+            respuesta1.get(),
+            respuesta2.get(),
+            respuesta3.get(),
+        )
+    )
+
+    verificar.pack(pady=20)
 
 
 
