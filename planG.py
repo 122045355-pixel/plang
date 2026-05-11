@@ -79,73 +79,30 @@ def inforeglamento():
         command=lambda: quiz1redirect(reglamento)
     )
     boton.pack(pady=15)
-def verificar_respuesta1(opcion, pregunta1, quiz):
 
-    respuestas_correctas = {
-        "¿cual es el castigo por plagio y/o copia de trabajos?":
-        "se reprobará la asignatura ",
-
-        "¿cuanto es el plazo de tiempo para justificar faltas?":
-        "1 día",
-
-        "¿Cuál es el tiempo de toleracia para entrar a clase sin falta?":
-        "10 minutos"
-    }
-
-    respuesta_correcta = respuestas_correctas[pregunta1]
-
-    if opcion == respuesta_correcta:
-
-        resultado = ctk.CTkLabel(
-            quiz,
-            text="Correcto",
-            font=("Arial", 16)
-        )
-
-    else:
-
-        resultado = ctk.CTkLabel(
-            quiz,
-            text="Incorrecto",
-            font=("Arial", 16)
-        )
-
-    resultado.pack(pady=10)
 
     
-def verificar_respuesta1(opcion, pregunta1, quiz):
+def verificar_respuesta1(
+    respuesta1,
+    respuesta2,
+    respuesta3,
+    resultado_label
+):
 
-    respuestas_correctas = {
+    correctas = 0
 
-        "¿cual es el castigo por plagio y/o copia de trabajos?":
-        "se reprobará la asignatura ",
+    if respuesta1 == "se reprobará la asignatura ":
+        correctas += 1
 
-        "¿cuanto es el plazo de tiempo para justificar faltas?":
-        "1 día",
+    if respuesta2 == "1 día":
+        correctas += 1
 
-        "¿Cuál es el tiempo de toleracia para entrar a clase sin falta?":
-        "10 minutos"
-    }
+    if respuesta3 == "10 minutos":
+        correctas += 1
 
-    respuesta_correcta = respuestas_correctas[pregunta1]
-
-    if opcion == respuesta_correcta:
-
-        resultado = ctk.CTkLabel(
-            quiz,
-            text="✅ Correcto",
-            font=("Arial", 16)
-        )
-
-    else:
-
-        resultado = ctk.CTkLabel(
-            quiz,
-            text="❌ Incorrecto",
-            font=("Arial", 16)
-        )
-
-    resultado.pack(pady=5)
+    resultado_label.configure(
+        text=f"Obtuviste {correctas} de 3 respuestas correctas"
+    )
 
 
 def quiz1():
@@ -161,8 +118,6 @@ def quiz1():
     )
     titulo.pack(pady=20)
 
-
-
     pregunta1 = "¿cual es el castigo por plagio y/o copia de trabajos?"
 
     label1 = ctk.CTkLabel(
@@ -171,6 +126,8 @@ def quiz1():
         font=("Arial", 20)
     )
     label1.pack(pady=10)
+
+    respuesta1 = ctk.StringVar(value="")
 
     opciones1 = [
         "se cancela la actividad",
@@ -181,20 +138,14 @@ def quiz1():
 
     for opcion in opciones1:
 
-        boton_opcion = ctk.CTkButton(
+        radio = ctk.CTkRadioButton(
             quiz,
             text=opcion,
-
-            command=lambda opcion=opcion:
-            verificar_respuesta1(
-                opcion,
-                pregunta1,
-                quiz
-            )
+            variable=respuesta1,
+            value=opcion
         )
 
-        boton_opcion.pack(pady=5)
-
+        radio.pack(pady=5)
 
     pregunta2 = "¿cuanto es el plazo de tiempo para justificar faltas?"
 
@@ -205,6 +156,8 @@ def quiz1():
     )
     label2.pack(pady=20)
 
+    respuesta2 = ctk.StringVar(value="")
+
     opciones2 = [
         "1 semana",
         "1 día",
@@ -214,21 +167,14 @@ def quiz1():
 
     for opcion in opciones2:
 
-        boton_opcion = ctk.CTkButton(
+        radio = ctk.CTkRadioButton(
             quiz,
             text=opcion,
-
-            command=lambda opcion=opcion:
-            verificar_respuesta1(
-                opcion,
-                pregunta2,
-                quiz
-            )
+            variable=respuesta2,
+            value=opcion
         )
 
-        boton_opcion.pack(pady=5)
-
-
+        radio.pack(pady=5)
 
     pregunta3 = "¿Cuál es el tiempo de toleracia para entrar a clase sin falta?"
 
@@ -239,6 +185,8 @@ def quiz1():
     )
     label3.pack(pady=20)
 
+    respuesta3 = ctk.StringVar(value="")
+
     opciones3 = [
         "5 minutos",
         "10 minutos",
@@ -248,21 +196,35 @@ def quiz1():
 
     for opcion in opciones3:
 
-        boton_opcion = ctk.CTkButton(
+        radio = ctk.CTkRadioButton(
             quiz,
             text=opcion,
-
-            command=lambda opcion=opcion:
-            verificar_respuesta1(
-                opcion,
-                pregunta3,
-                quiz
-            )
+            variable=respuesta3,
+            value=opcion
         )
 
-        boton_opcion.pack(pady=5)
+        radio.pack(pady=5)
+    resultado_label = ctk.CTkLabel(
+    quiz,
+    text="",
+    font=("Arial", 18)
+    )
 
+    resultado_label.pack(pady=20)
+    boton_verificar = ctk.CTkButton(
+    quiz,
+    text="Verificar Quiz",
 
+    command=lambda:
+    verificar_respuesta1(
+        respuesta1.get(),
+        respuesta2.get(),
+        respuesta3.get(),
+        resultado_label
+    )
+)
+
+    boton_verificar.pack(pady=20)
 
 def abrir_ventanatroll():
 
