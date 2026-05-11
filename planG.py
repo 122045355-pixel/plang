@@ -111,7 +111,7 @@ def porcentajes():
 
     label_imagen.pack(pady=20)
 
-    # IMPORTANTE: guardar referencia
+   
     label_imagen.image = imagen
 
     boton = ctk.CTkButton(
@@ -218,7 +218,7 @@ def ventanaAprobado2():
     boton = ctk.CTkButton(
     ventanaAprobado,
     text="Aceptar",
-    command=lambda: reglametoredirect(ventanaAprobado, abrir_ventana3)
+    command=lambda: reglametoredirect(ventanaAprobado, abrir_ventana4)
     )
     boton.pack(pady=20)
 
@@ -253,7 +253,74 @@ def ventanaFracaso2():
     command=lambda:
     reglametoredirect(
         ventanaFracaso,
-        inforeglamento
+        porcentajes
+    )
+    )
+    boton.pack(pady=20)
+def ventanaAprobado3():
+
+    ventanaAprobado = ctk.CTkToplevel(app)
+    ventanaAprobado.geometry("400x400")
+    ventanaAprobado.title("felicidades")
+
+    texto = ctk.CTkLabel(
+        ventanaAprobado,
+        text="son lagrimas de orgullo :,,D",
+        font=("Arial", 20)
+    )
+    texto.pack(pady=20)
+
+    imagen = ctk.CTkImage(
+        light_image=Image.open("espacio.jpg"),
+        size=(200, 200)
+    )
+
+    label_imagen = ctk.CTkLabel(
+        ventanaAprobado,
+        text="",
+        image=imagen
+    )
+    label_imagen.pack(pady=20)
+
+    boton = ctk.CTkButton(
+    ventanaAprobado,
+    text="Aceptar",
+    command=lambda: reglametoredirect(ventanaAprobado3, abrir_ventana5)
+    )
+    boton.pack(pady=20)
+
+def ventanaFracaso3():
+
+    ventanaFracaso = ctk.CTkToplevel(app)
+    ventanaFracaso.geometry("400x400")
+    ventanaFracaso.title("efe en el chat")
+
+    texto = ctk.CTkLabel(
+        ventanaFracaso,
+        text="se que te quieres rendir pero tu mamá no crió a un cobarde",
+        font=("Arial", 20)
+    )
+    texto.pack(pady=20)
+
+    imagen = ctk.CTkImage(
+        light_image=Image.open("llorando.jpg"),
+        size=(200, 200)
+    )
+
+    label_imagen = ctk.CTkLabel(
+        ventanaFracaso,
+        text="",
+        image=imagen
+    )
+    label_imagen.pack(pady=20)
+
+    boton = ctk.CTkButton(
+    ventanaFracaso,
+    text="Aceptar",
+    command=lambda:
+    reglametoredirect(
+        ventanaFracaso3,
+        objetivos
     )
     )
     boton.pack(pady=20)
@@ -529,7 +596,7 @@ def abrir_ventana3():
     )
     texto1 = ctk.CTkLabel(
         ventana3,
-        text="Felicidade, pasaste a la siguiente prueba, \n a continuación te mostraremos los porcentajes de la evaluación \n una vez leido todo, presiona el botón y avanza al quiz",
+        text="Felicidads, pasaste a la siguiente prueba, \n a continuación te mostraremos los porcentajes de la evaluación \n una vez leido todo, presiona el botón y avanza al quiz",
         font=("Arial", 20)
     )
 
@@ -540,6 +607,32 @@ def abrir_ventana3():
     ventana3,
     text="Aceptar",
     command=lambda: reglametoredirect(ventana3,porcentajes)
+    )
+    boton.pack(pady=20)
+def abrir_ventana4():
+
+    ventana4 = ctk.CTkToplevel(app)
+    ventana4.geometry("800x400")
+    ventana4.title("La Cámara de las Reglas")
+
+    texto = ctk.CTkLabel(
+        ventana4,
+        text="skills a desbloquear",
+        font=("Arial", 40)
+    )
+    texto1 = ctk.CTkLabel(
+        ventana4,
+        text="increible, vamos a medio camino, \n ahora realizaremos repaso a las skills a practica \n una vez leido todo, presiona el botón y avanza al quiz",
+        font=("Arial", 20)
+    )
+
+    texto.pack(pady=40)
+    texto1.pack(pady=40)
+    app.withdraw()
+    boton = ctk.CTkButton(
+    ventana4,
+    text="Aceptar",
+    command=lambda: reglametoredirect(ventana4,objetivos)
     )
     boton.pack(pady=20)
 def verificar_respuesta2(
@@ -683,6 +776,230 @@ def quiz2():
 
     verificar.pack(pady=20)
 
+def objetivos():
 
+    info = ctk.CTkToplevel(app)
+    info.geometry("1000x800")
+    info.title("objetivos generales y específicos")
+
+    titulo = ctk.CTkLabel(
+        info,
+        text="Información objetivos y skills a desbloquear",
+        font=("Arial", 32, "bold")
+    )
+    titulo.pack(pady=20)
+
+    objetivo_titulo = ctk.CTkLabel(
+        info,
+        text="OBJETIVO",
+        font=("Arial", 24, "bold")
+    )
+    objetivo_titulo.pack(pady=10)
+
+    objetivo = ctk.CTkLabel(
+        info,
+        text="Desarrollará aplicaciones móviles mediante lenguajes de programación,\n"
+             "entornos de desarrollo, diseño de interfaces de usuario,\n"
+             "arquitecturas, patrones de diseño y herramientas de programación móvil.",
+        font=("Arial", 18),
+        justify="center"
+    )
+    objetivo.pack(pady=10)
+
+    competencias_titulo = ctk.CTkLabel(
+        info,
+        text="COMPETENCIAS QUE ADQUIERE",
+        font=("Arial", 24, "bold")
+    )
+    competencias_titulo.pack(pady=10)
+
+    competencias = ctk.CTkLabel(
+        info,
+        text="Soluciones tecnológicas multiplataforma de software web y móvil\n"
+             "utilizando programación orientada a objetos, frameworks,\n"
+             "bases de datos, estándares de calidad y diseño.",
+        font=("Arial", 18),
+        justify="center"
+    )
+    competencias.pack(pady=10)
+
+    temario_titulo = ctk.CTkLabel(
+        info,
+        text="TEMARIO DE LA ASIGNATURA",
+        font=("Arial", 24, "bold")
+    )
+    temario_titulo.pack(pady=20)
+
+    tabla = ctk.CTkTextbox(
+        info,
+        width=800,
+        height=250,
+        font=("Consolas", 18)
+    )
+    tabla.pack(pady=10)
+
+    contenido = """
+    unidad/horas teoria/horas practica
+
+1. Introducción al desarrollo apps móviles   10  8
+
+2. Diseño de aplicaciones móviles            10  14
+
+3. Programación de aplicaciones móviles      12  24
+
+4. Publicación de aplicaciones móviles        4   8
+"""
+
+    tabla.insert("1.0", contenido)
+    tabla.configure(state="disabled")
+
+    boton = ctk.CTkButton(
+        info,
+        text="Continuar al Quiz",
+        command=lambda: reglametoredirect(info, quiz3)
+    )
+    boton.pack(pady=20)
+
+
+def verificar_respuesta3(
+    quiz,
+    respuesta1,
+    respuesta2,
+    respuesta3,
+):
+
+    correctas = 0
+
+    if respuesta1 == "Programación orientada a objetos":
+        correctas += 1
+
+    if respuesta2 == "24":
+        correctas += 1
+
+    if respuesta3 == "Publicación de aplicaciones móviles":
+        correctas += 1
+
+    if correctas < 2:
+        reglametoredirect(quiz, ventanaFracaso3)
+    else:
+        reglametoredirect(quiz, ventanaAprobado3)
+
+
+def quiz3():
+
+    quiz = ctk.CTkToplevel(app)
+    quiz.geometry("700x900")
+    quiz.title("Quiz Información General")
+
+    titulo = ctk.CTkLabel(
+        quiz,
+        text="Quiz de Información General",
+        font=("Arial", 28, "bold")
+    )
+    titulo.pack(pady=20)
+
+   
+    pregunta1 = "¿Qué tipo de programación se menciona en las competencias?"
+
+    label1 = ctk.CTkLabel(
+        quiz,
+        text=pregunta1,
+        font=("Arial", 20)
+    )
+    label1.pack(pady=10)
+
+    respuesta1 = ctk.StringVar(value="")
+
+    opciones1 = [
+        "Programación funcional",
+        "Programación orientada a objetos",
+        "Programación en ensamblador",
+        "Programación lineal"
+    ]
+
+    for opcion in opciones1:
+
+        radio = ctk.CTkRadioButton(
+            quiz,
+            text=opcion,
+            variable=respuesta1,
+            value=opcion
+        )
+
+        radio.pack(pady=5)
+
+  
+    pregunta2 = "¿Cuántas horas prácticas tiene la unidad 3?"
+
+    label2 = ctk.CTkLabel(
+        quiz,
+        text=pregunta2,
+        font=("Arial", 20)
+    )
+    label2.pack(pady=20)
+
+    respuesta2 = ctk.StringVar(value="")
+
+    opciones2 = [
+        "8",
+        "10",
+        "24",
+        "12"
+    ]
+
+    for opcion in opciones2:
+
+        radio = ctk.CTkRadioButton(
+            quiz,
+            text=opcion,
+            variable=respuesta2,
+            value=opcion
+        )
+
+        radio.pack(pady=5)
+
+  
+    pregunta3 = "¿Cuál es la última unidad del temario?"
+
+    label3 = ctk.CTkLabel(
+        quiz,
+        text=pregunta3,
+        font=("Arial", 20)
+    )
+    label3.pack(pady=20)
+
+    respuesta3 = ctk.StringVar(value="")
+
+    opciones3 = [
+        "Diseño de aplicaciones móviles",
+        "Programación de aplicaciones móviles",
+        "Publicación de aplicaciones móviles",
+        "Introducción al desarrollo apps móviles"
+    ]
+
+    for opcion in opciones3:
+
+        radio = ctk.CTkRadioButton(
+            quiz,
+            text=opcion,
+            variable=respuesta3,
+            value=opcion
+        )
+
+        radio.pack(pady=5)
+
+    boton_verificar = ctk.CTkButton(
+        quiz,
+        text="Verificar Quiz",
+        command=lambda:
+        verificar_respuesta3(
+            quiz,
+            respuesta1.get(),
+            respuesta2.get(),
+            respuesta3.get(),
+        )
+    )
+
+    boton_verificar.pack(pady=20)
 
 app.mainloop()
