@@ -113,65 +113,154 @@ def verificar_respuesta1(opcion, pregunta1, quiz):
     resultado.pack(pady=10)
 
     
+def verificar_respuesta1(opcion, pregunta1, quiz):
+
+    respuestas_correctas = {
+
+        "¿cual es el castigo por plagio y/o copia de trabajos?":
+        "se reprobará la asignatura ",
+
+        "¿cuanto es el plazo de tiempo para justificar faltas?":
+        "1 día",
+
+        "¿Cuál es el tiempo de toleracia para entrar a clase sin falta?":
+        "10 minutos"
+    }
+
+    respuesta_correcta = respuestas_correctas[pregunta1]
+
+    if opcion == respuesta_correcta:
+
+        resultado = ctk.CTkLabel(
+            quiz,
+            text="✅ Correcto",
+            font=("Arial", 16)
+        )
+
+    else:
+
+        resultado = ctk.CTkLabel(
+            quiz,
+            text="❌ Incorrecto",
+            font=("Arial", 16)
+        )
+
+    resultado.pack(pady=5)
+
+
 def quiz1():
+
     quiz = ctk.CTkToplevel(app)
-    quiz.geometry("400x400")
+    quiz.geometry("700x900")
     quiz.title("Quiz")
+
+    titulo = ctk.CTkLabel(
+        quiz,
+        text="Quiz sobre el reglamento",
+        font=("Arial", 28, "bold")
+    )
+    titulo.pack(pady=20)
+
+
+
     pregunta1 = "¿cual es el castigo por plagio y/o copia de trabajos?"
-    pregunta = ctk.CTkLabel(
+
+    label1 = ctk.CTkLabel(
         quiz,
         text=pregunta1,
         font=("Arial", 20)
     )
-    pregunta.pack(pady=20)
+    label1.pack(pady=10)
 
-    opciones = ["se cancela la actividad", "se pieerde el derecho a exámen", "se prohibirá la entrada a esa clase", "se reprobará la asignatura "]
-    for opcion in opciones:
+    opciones1 = [
+        "se cancela la actividad",
+        "se pierde el derecho a exámen",
+        "se prohibirá la entrada a esa clase",
+        "se reprobará la asignatura "
+    ]
+
+    for opcion in opciones1:
+
         boton_opcion = ctk.CTkButton(
             quiz,
             text=opcion,
-            command=lambda opcion=opcion: verificar_respuesta1(opcion, pregunta1, quiz)
-        )
-        boton_opcion.pack(pady=10)
-    quiz = ctk.CTkToplevel(app)
-    quiz.geometry("400x400")
-    quiz.title("Quiz")
 
-    pregunta1 = "¿cuanto es el plazo de tiempo para justificar faltas?"
-    pregunta = ctk.CTkLabel(
+            command=lambda opcion=opcion:
+            verificar_respuesta1(
+                opcion,
+                pregunta1,
+                quiz
+            )
+        )
+
+        boton_opcion.pack(pady=5)
+
+
+    pregunta2 = "¿cuanto es el plazo de tiempo para justificar faltas?"
+
+    label2 = ctk.CTkLabel(
         quiz,
-        text= pregunta1,
+        text=pregunta2,
         font=("Arial", 20)
     )
-    pregunta.pack(pady=20)
+    label2.pack(pady=20)
 
-    opciones = ["1 semana", "1 día", "al final del parcial", "ese mismo día"]
-    for opcion in opciones:
+    opciones2 = [
+        "1 semana",
+        "1 día",
+        "al final del parcial",
+        "ese mismo día"
+    ]
+
+    for opcion in opciones2:
+
         boton_opcion = ctk.CTkButton(
             quiz,
             text=opcion,
-            command=lambda opcion=opcion: verificar_respuesta1(opcion, pregunta1, quiz)
+
+            command=lambda opcion=opcion:
+            verificar_respuesta1(
+                opcion,
+                pregunta2,
+                quiz
+            )
         )
-        boton_opcion.pack(pady=10)
-    quiz = ctk.CTkToplevel(app)
-    quiz.geometry("400x400")
-    quiz.title("Quiz")
-    pregunta1 = "¿Cuál es el tiempo de toleracia para entrar a clase sin falta?"
-    pregunta = ctk.CTkLabel(
+
+        boton_opcion.pack(pady=5)
+
+
+
+    pregunta3 = "¿Cuál es el tiempo de toleracia para entrar a clase sin falta?"
+
+    label3 = ctk.CTkLabel(
         quiz,
-        text=pregunta1,
+        text=pregunta3,
         font=("Arial", 20)
     )
-    pregunta.pack(pady=20)
+    label3.pack(pady=20)
 
-    opciones = ["5 minutos", "10 minutos", "15 minutos", "no hay tolerancia"]
-    for opcion in opciones:
+    opciones3 = [
+        "5 minutos",
+        "10 minutos",
+        "15 minutos",
+        "no hay tolerancia"
+    ]
+
+    for opcion in opciones3:
+
         boton_opcion = ctk.CTkButton(
             quiz,
             text=opcion,
-            command=lambda opcion=opcion: verificar_respuesta1(opcion, pregunta1, quiz)
+
+            command=lambda opcion=opcion:
+            verificar_respuesta1(
+                opcion,
+                pregunta3,
+                quiz
+            )
         )
-        boton_opcion.pack(pady=10)
+
+        boton_opcion.pack(pady=5)
 
 
 
