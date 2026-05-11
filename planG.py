@@ -5,9 +5,9 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
 
 app = ctk.CTk()
-def reglametoredirect(ventana):
+def reglametoredirect(ventana,nueva):
     ventana.destroy()
-    inforeglamento()
+    nueva()
 def quiz1redirect(ventana):
     ventana.destroy()
     quiz1()
@@ -79,6 +79,69 @@ def inforeglamento():
         command=lambda: quiz1redirect(reglamento)
     )
     boton.pack(pady=15)
+def ventanaAprobado():
+
+    ventanaAprobado = ctk.CTkToplevel(app)
+    ventanaAprobado.geometry("400x400")
+    ventanaAprobado.title("felicidades")
+
+    texto = ctk.CTkLabel(
+        ventanaAprobado,
+        text="felicidades, aprobaste el quiz, ahora puedes continuar con la materia",
+        font=("Arial", 20)
+    )
+    texto.pack(pady=20)
+
+    imagen = ctk.CTkImage(
+        light_image=Image.open("aprobado.jpg"),
+        size=(200, 200)
+    )
+
+    label_imagen = ctk.CTkLabel(
+        ventanaAprobado,
+        text="homero chino",
+        image=imagen
+    )
+    label_imagen.pack(pady=20)
+
+    boton = ctk.CTkButton(
+    ventanaAprobado,
+    text="Aceptar",
+    command=reglametoredirect(ventanaAprobado,app)
+    )
+    boton.pack(pady=20)
+
+def ventanaFracaso():
+
+    ventanaFracaso = ctk.CTkToplevel(app)
+    ventanaFracaso.geometry("400x400")
+    ventanaFracaso.title("efe en el chat")
+
+    texto = ctk.CTkLabel(
+        ventanaFracaso,
+        text="fracasaste el quiz, te recomiendo leer el reglamento detenidamente y volver a intentarlo",
+        font=("Arial", 20)
+    )
+    texto.pack(pady=20)
+
+    imagen = ctk.CTkImage(
+        light_image=Image.open("Fracaso.jpg"),
+        size=(200, 200)
+    )
+
+    label_imagen = ctk.CTkLabel(
+        ventanaFracaso,
+        text="homero chino",
+        image=imagen
+    )
+    label_imagen.pack(pady=20)
+
+    boton = ctk.CTkButton(
+    ventanaFracaso,
+    text="Aceptar",
+    command=reglametoredirect(ventanaFracaso,app)
+    )
+    boton.pack(pady=20)
 
 
     
@@ -86,7 +149,7 @@ def verificar_respuesta1(
     respuesta1,
     respuesta2,
     respuesta3,
-    resultado_label
+    
 ):
 
     correctas = 0
@@ -100,9 +163,13 @@ def verificar_respuesta1(
     if respuesta3 == "10 minutos":
         correctas += 1
 
-    resultado_label.configure(
-        text=f"Obtuviste {correctas} de 3 respuestas correctas"
-    )
+
+    if correctas < 2:
+        ventanaFracaso()
+    else:
+
+        ventanaAprobado()
+
 
 
 def quiz1():
@@ -220,7 +287,7 @@ def quiz1():
         respuesta1.get(),
         respuesta2.get(),
         respuesta3.get(),
-        resultado_label
+        
     )
 )
 
@@ -284,7 +351,7 @@ def abrir_ventana2():
     boton = ctk.CTkButton(
     ventana3,
     text="Aceptar",
-    command=lambda: reglametoredirect(ventana3)
+    command=lambda: reglametoredirect(ventana3,inforeglamento)
     )
     boton.pack(pady=20)
 
