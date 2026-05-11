@@ -5,6 +5,174 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
 
 app = ctk.CTk()
+def reglametoredirect(ventana):
+    ventana.destroy()
+    inforeglamento()
+def quiz1redirect(ventana):
+    ventana.destroy()
+    quiz1()
+
+def inforeglamento():
+    reglamento = ctk.CTkToplevel(app)
+    reglamento.geometry("800x900")
+    reglamento.title("Reglamento")
+
+    titulo = ctk.CTkLabel(
+        reglamento,
+        text="Reglamento de la materia",
+        font=("Arial", 30, "bold")
+    )
+    titulo.pack(pady=20)
+
+    caja_texto = ctk.CTkTextbox(
+        reglamento,
+        width=700,
+        height=450,
+        font=("Arial", 16),
+        wrap="word"
+    )
+    caja_texto.pack(padx=20, pady=20, fill="both", expand=True)
+
+    reglamento_texto = """
+1. Se requiere 80% de asistencia para tener derecho a evaluación parcial y 80% de trabajos en clase.
+
+2. Se permiten 10 minutos de tolerancia y si el alumno llega después de este tiempo puede permanecer en la clase, pero no se tomará la asistencia.
+
+3. Las faltas deberán estar justificadas mediante el correo institucional con un plazo máximo de 24 horas.
+
+4. Las tareas y trabajos deberán subirlas al Classroom de forma individual y no se recibirán de manera extemporánea.
+
+5. Las tareas y trabajos deben presentarse en tiempo y forma.
+
+6. Utilizar el correo institucional para trabajar bajo la plataforma Google Classroom.
+
+7. El plagio o copia de trabajos y/o exámenes será condicionado a reprobar la asignatura.
+
+8. Cualquier deshonestidad académica será sancionada reprobando el parcial.
+
+9. En caso de indisciplina o falta de respeto se aplicarán sanciones.
+
+10. Uso de laptops y dispositivos móviles limitado únicamente a actividades académicas.
+
+11. Prohibido el uso de audífonos durante la clase.
+
+12. Prohibido comer y/o tomar líquidos en el salón.
+
+13. Prohibido sentarse encima de las mesas o columpiarse en las sillas.
+
+14. Todo tema académico debe revisarse primero con el docente.
+
+15. Cualquier situación no prevista deberá tratarse con la dirección del programa educativo.
+
+16. El día de entrega de calificaciones todos los estudiantes deben estar presentes.
+
+17. Este reglamento entra en vigor después de ser aceptado por la mayoría de los estudiantes.
+"""
+
+    caja_texto.insert("1.0", reglamento_texto)
+
+    caja_texto.configure(state="disabled")
+
+    boton = ctk.CTkButton(
+        reglamento,
+        text="continuar al quiz",
+        command=lambda: quiz1redirect(reglamento)
+    )
+    boton.pack(pady=15)
+def verificar_respuesta1(opcion, pregunta1, quiz):
+
+    respuestas_correctas = {
+        "¿cual es el castigo por plagio y/o copia de trabajos?":
+        "se reprobará la asignatura ",
+
+        "¿cuanto es el plazo de tiempo para justificar faltas?":
+        "1 día",
+
+        "¿Cuál es el tiempo de toleracia para entrar a clase sin falta?":
+        "10 minutos"
+    }
+
+    respuesta_correcta = respuestas_correctas[pregunta1]
+
+    if opcion == respuesta_correcta:
+
+        resultado = ctk.CTkLabel(
+            quiz,
+            text="Correcto",
+            font=("Arial", 16)
+        )
+
+    else:
+
+        resultado = ctk.CTkLabel(
+            quiz,
+            text="Incorrecto",
+            font=("Arial", 16)
+        )
+
+    resultado.pack(pady=10)
+
+    
+def quiz1():
+    quiz = ctk.CTkToplevel(app)
+    quiz.geometry("400x400")
+    quiz.title("Quiz")
+    pregunta1 = "¿cual es el castigo por plagio y/o copia de trabajos?"
+    pregunta = ctk.CTkLabel(
+        quiz,
+        text=pregunta1,
+        font=("Arial", 20)
+    )
+    pregunta.pack(pady=20)
+
+    opciones = ["se cancela la actividad", "se pieerde el derecho a exámen", "se prohibirá la entrada a esa clase", "se reprobará la asignatura "]
+    for opcion in opciones:
+        boton_opcion = ctk.CTkButton(
+            quiz,
+            text=opcion,
+            command=lambda opcion=opcion: verificar_respuesta1(opcion, pregunta1, quiz)
+        )
+        boton_opcion.pack(pady=10)
+    quiz = ctk.CTkToplevel(app)
+    quiz.geometry("400x400")
+    quiz.title("Quiz")
+
+    pregunta1 = "¿cuanto es el plazo de tiempo para justificar faltas?"
+    pregunta = ctk.CTkLabel(
+        quiz,
+        text= pregunta1,
+        font=("Arial", 20)
+    )
+    pregunta.pack(pady=20)
+
+    opciones = ["1 semana", "1 día", "al final del parcial", "ese mismo día"]
+    for opcion in opciones:
+        boton_opcion = ctk.CTkButton(
+            quiz,
+            text=opcion,
+            command=lambda opcion=opcion: verificar_respuesta1(opcion, pregunta1, quiz)
+        )
+        boton_opcion.pack(pady=10)
+    quiz = ctk.CTkToplevel(app)
+    quiz.geometry("400x400")
+    quiz.title("Quiz")
+    pregunta1 = "¿Cuál es el tiempo de toleracia para entrar a clase sin falta?"
+    pregunta = ctk.CTkLabel(
+        quiz,
+        text=pregunta1,
+        font=("Arial", 20)
+    )
+    pregunta.pack(pady=20)
+
+    opciones = ["5 minutos", "10 minutos", "15 minutos", "no hay tolerancia"]
+    for opcion in opciones:
+        boton_opcion = ctk.CTkButton(
+            quiz,
+            text=opcion,
+            command=lambda opcion=opcion: verificar_respuesta1(opcion, pregunta1, quiz)
+        )
+        boton_opcion.pack(pady=10)
+
 
 
 def abrir_ventanatroll():
@@ -27,7 +195,7 @@ def abrir_ventanatroll():
 
     label_imagen = ctk.CTkLabel(
         ventanatroll,
-        text="",
+        text="homero chino",
         image=imagen
     )
     label_imagen.pack(pady=20)
@@ -45,17 +213,29 @@ def abrir_ventanatroll():
 def abrir_ventana2():
 
     ventana3 = ctk.CTkToplevel(app)
-    ventana3.geometry("400x200")
-    ventana3.title("Nueva ventana")
+    ventana3.geometry("800x400")
+    ventana3.title("La Cámara de las Reglas")
 
     texto = ctk.CTkLabel(
         ventana3,
-        text="Bienvenido a la siguiente parte 😎",
+        text="La Cámara de las Reglas",
+        font=("Arial", 40)
+    )
+    texto1 = ctk.CTkLabel(
+        ventana3,
+        text="a continiación presentaremos el reglamento de la materia, \n es importante que lo leas detenidamente para el siguiente cuestionario \n una vez leido todo, presiona el botón y avanza al quiz",
         font=("Arial", 20)
     )
 
     texto.pack(pady=40)
+    texto1.pack(pady=40)
     app.withdraw()
+    boton = ctk.CTkButton(
+    ventana3,
+    text="Aceptar",
+    command=lambda: reglametoredirect(ventana3)
+    )
+    boton.pack(pady=20)
 
 frame = ctk.CTkFrame(
     app,
@@ -101,11 +281,11 @@ boton = ctk.CTkButton(
 )
 boton.pack(pady=20)
 
-boton1 = ctk.CTkButton(
+boton2 = ctk.CTkButton(
     frame,
     text="Continuar",
     command=abrir_ventana2
 )
-boton1.pack(pady=20)
+boton2.pack(pady=20)
 
 app.mainloop()
