@@ -79,6 +79,52 @@ def inforeglamento():
         command=lambda: quiz1redirect(reglamento)
     )
     boton.pack(pady=15)
+    
+def porcentajes():
+
+    porcentajes = ctk.CTkToplevel(app)
+    porcentajes.geometry("800x600")
+    porcentajes.title("Porcentajes de Evaluación")
+
+    titulo = ctk.CTkLabel(
+        porcentajes,
+        text="El Oráculo de las Notas",
+        font=("Arial", 30, "bold")
+    )
+    titulo.pack(pady=20)
+
+    texto = ctk.CTkLabel(
+        porcentajes,
+        text="revisa atentamente los porcentajes de evaluación",
+        font=("Arial", 20)
+    )
+    texto.pack(pady=20)
+
+    imagen = ctk.CTkImage(
+        light_image=Image.open("porcentajes.png"),
+        size=(500, 200)
+    )
+
+    label_imagen = ctk.CTkLabel(
+        porcentajes,
+        text="",
+        image=imagen
+    )
+
+    label_imagen.pack(pady=20)
+
+    # IMPORTANTE: guardar referencia
+    label_imagen.image = imagen
+
+    boton = ctk.CTkButton(
+        porcentajes,
+        text="Continuar",
+        command=porcentajes.destroy
+    )
+
+    boton.pack(pady=20)
+
+
 def ventanaAprobado():
 
     ventanaAprobado = ctk.CTkToplevel(app)
@@ -99,7 +145,7 @@ def ventanaAprobado():
 
     label_imagen = ctk.CTkLabel(
         ventanaAprobado,
-        text="homero chino",
+        text="",
         image=imagen
     )
     label_imagen.pack(pady=20)
@@ -107,7 +153,7 @@ def ventanaAprobado():
     boton = ctk.CTkButton(
     ventanaAprobado,
     text="Aceptar",
-    command=reglametoredirect(ventanaAprobado,app)
+    command=lambda: reglametoredirect(ventanaAprobado, abrir_ventana3)
     )
     boton.pack(pady=20)
 
@@ -131,7 +177,7 @@ def ventanaFracaso():
 
     label_imagen = ctk.CTkLabel(
         ventanaFracaso,
-        text="homero chino",
+        text="",
         image=imagen
     )
     label_imagen.pack(pady=20)
@@ -139,13 +185,18 @@ def ventanaFracaso():
     boton = ctk.CTkButton(
     ventanaFracaso,
     text="Aceptar",
-    command=reglametoredirect(ventanaFracaso,app)
+    command=lambda:
+    reglametoredirect(
+        ventanaFracaso,
+        inforeglamento
+    )
     )
     boton.pack(pady=20)
 
 
     
 def verificar_respuesta1(
+    quiz,
     respuesta1,
     respuesta2,
     respuesta3,
@@ -165,10 +216,10 @@ def verificar_respuesta1(
 
 
     if correctas < 2:
-        ventanaFracaso()
+        reglametoredirect(quiz, ventanaFracaso)
     else:
 
-        ventanaAprobado()
+        reglametoredirect(quiz, ventanaAprobado)
 
 
 
@@ -271,19 +322,13 @@ def quiz1():
         )
 
         radio.pack(pady=5)
-    resultado_label = ctk.CTkLabel(
-    quiz,
-    text="",
-    font=("Arial", 18)
-    )
-
-    resultado_label.pack(pady=20)
     boton_verificar = ctk.CTkButton(
     quiz,
     text="Verificar Quiz",
 
     command=lambda:
     verificar_respuesta1(
+        quiz,
         respuesta1.get(),
         respuesta2.get(),
         respuesta3.get(),
@@ -405,5 +450,34 @@ boton2 = ctk.CTkButton(
     command=abrir_ventana2
 )
 boton2.pack(pady=20)
+
+def abrir_ventana3():
+
+    ventana3 = ctk.CTkToplevel(app)
+    ventana3.geometry("800x400")
+    ventana3.title("La Cámara de las Reglas")
+
+    texto = ctk.CTkLabel(
+        ventana3,
+        text="El oraculo de las notas",
+        font=("Arial", 40)
+    )
+    texto1 = ctk.CTkLabel(
+        ventana3,
+        text="Felicidade, pasaste a la siguiente prueba, \n a continuación te mostraremos los porcentajes de la evaluación \n una vez leido todo, presiona el botón y avanza al quiz",
+        font=("Arial", 20)
+    )
+
+    texto.pack(pady=40)
+    texto1.pack(pady=40)
+    app.withdraw()
+    boton = ctk.CTkButton(
+    ventana3,
+    text="Aceptar",
+    command=lambda: reglametoredirect(ventana3,porcentajes)
+    )
+    boton.pack(pady=20)
+
+
 
 app.mainloop()
