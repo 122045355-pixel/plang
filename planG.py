@@ -192,12 +192,12 @@ def ventanaFracaso():
     boton.pack(pady=20)
 def ventanaAprobado2():
 
-    ventanaAprobado = ctk.CTkToplevel(app)
-    ventanaAprobado.geometry("400x400")
-    ventanaAprobado.title("felicidades")
+    ventanaAprobado2 = ctk.CTkToplevel(app)
+    ventanaAprobado2.geometry("400x400")
+    ventanaAprobado2.title("felicidades")
 
     texto = ctk.CTkLabel(
-        ventanaAprobado,
+        ventanaAprobado2,
         text="felicidades, aprobaste el quiz, tus padres deben sentirse orullosos :,D",
         font=("Arial", 20)
     )
@@ -209,27 +209,27 @@ def ventanaAprobado2():
     )
 
     label_imagen = ctk.CTkLabel(
-        ventanaAprobado,
+        ventanaAprobado2,
         text="",
         image=imagen
     )
     label_imagen.pack(pady=20)
 
     boton = ctk.CTkButton(
-    ventanaAprobado,
+    ventanaAprobado2,
     text="Aceptar",
-    command=lambda: reglametoredirect(ventanaAprobado, abrir_ventana4)
+    command=lambda: reglametoredirect(ventanaAprobado2, abrir_ventana4)
     )
     boton.pack(pady=20)
 
 def ventanaFracaso2():
 
-    ventanaFracaso = ctk.CTkToplevel(app)
-    ventanaFracaso.geometry("400x400")
-    ventanaFracaso.title("efe en el chat")
+    ventanaFracaso2 = ctk.CTkToplevel(app)
+    ventanaFracaso2.geometry("400x400")
+    ventanaFracaso2.title("efe en el chat")
 
     texto = ctk.CTkLabel(
-        ventanaFracaso,
+        ventanaFracaso2,
         text="fracasaste el quiz, llegaste mas lejos animo :DDD",
         font=("Arial", 20)
     )
@@ -241,30 +241,30 @@ def ventanaFracaso2():
     )
 
     label_imagen = ctk.CTkLabel(
-        ventanaFracaso,
+        ventanaFracaso2,
         text="",
         image=imagen
     )
     label_imagen.pack(pady=20)
 
     boton = ctk.CTkButton(
-    ventanaFracaso,
+    ventanaFracaso2,
     text="Aceptar",
     command=lambda:
     reglametoredirect(
-        ventanaFracaso,
+        ventanaFracaso2,
         porcentajes
     )
     )
     boton.pack(pady=20)
 def ventanaAprobado3():
 
-    ventanaAprobado = ctk.CTkToplevel(app)
-    ventanaAprobado.geometry("400x400")
-    ventanaAprobado.title("felicidades")
+    ventanaAprobado3 = ctk.CTkToplevel(app)
+    ventanaAprobado3.geometry("400x400")
+    ventanaAprobado3.title("felicidades")
 
     texto = ctk.CTkLabel(
-        ventanaAprobado,
+        ventanaAprobado3,
         text="son lagrimas de orgullo :,,D",
         font=("Arial", 20)
     )
@@ -276,14 +276,14 @@ def ventanaAprobado3():
     )
 
     label_imagen = ctk.CTkLabel(
-        ventanaAprobado,
+        ventanaAprobado3,
         text="",
         image=imagen
     )
     label_imagen.pack(pady=20)
 
     boton = ctk.CTkButton(
-    ventanaAprobado,
+    ventanaAprobado3,
     text="Aceptar",
     command=lambda: reglametoredirect(ventanaAprobado3, abrir_ventana5)
     )
@@ -291,12 +291,12 @@ def ventanaAprobado3():
 
 def ventanaFracaso3():
 
-    ventanaFracaso = ctk.CTkToplevel(app)
-    ventanaFracaso.geometry("400x400")
-    ventanaFracaso.title("efe en el chat")
+    ventanaFracaso3 = ctk.CTkToplevel(app)
+    ventanaFracaso3.geometry("400x400")
+    ventanaFracaso3.title("efe en el chat")
 
     texto = ctk.CTkLabel(
-        ventanaFracaso,
+        ventanaFracaso3,
         text="se que te quieres rendir pero tu mamá no crió a un cobarde",
         font=("Arial", 20)
     )
@@ -308,14 +308,14 @@ def ventanaFracaso3():
     )
 
     label_imagen = ctk.CTkLabel(
-        ventanaFracaso,
+        ventanaFracaso3,
         text="",
         image=imagen
     )
     label_imagen.pack(pady=20)
 
     boton = ctk.CTkButton(
-    ventanaFracaso,
+    ventanaFracaso3,
     text="Aceptar",
     command=lambda:
     reglametoredirect(
@@ -324,6 +324,73 @@ def ventanaFracaso3():
     )
     )
     boton.pack(pady=20)
+def ventanaFracaso4():
+
+    ventanaFracaso4 = ctk.CTkToplevel(app)
+    ventanaFracaso4.geometry("400x400")
+    ventanaFracaso4.title("efe en el chat")
+
+    texto = ctk.CTkLabel(
+        ventanaFracaso4,
+        text="si 3 anos de universidad no te detuvieron, este quiz tampoco lo hará (no tengo la letra que sigue de la n xd)",
+        font=("Arial", 20)
+    )
+    texto.pack(pady=20)
+
+    imagen = ctk.CTkImage(
+        light_image=Image.open("pum.jpg"),
+        size=(200, 200)
+    )
+
+    label_imagen = ctk.CTkLabel(
+        ventanaFracaso4,
+        text="",
+        image=imagen
+    )
+    label_imagen.pack(pady=20)
+
+    boton = ctk.CTkButton(
+    ventanaFracaso4,
+    text="Aceptar",
+    command=lambda:
+    reglametoredirect(
+        ventanaFracaso4,
+        Fechas
+    )
+    )
+    boton.pack(pady=20)
+def ventanaAprobado4():
+
+    ventanaAprobado4 = ctk.CTkToplevel(app)
+    ventanaAprobado4.geometry("400x400")
+    ventanaAprobado4.title("felicidades")
+
+    texto = ctk.CTkLabel(
+        ventanaAprobado4,
+        text="lo lograste, a partir de ahora eres un sobreviviente de aplicaciones web :DDD",
+        font=("Arial", 20)
+    )
+    texto.pack(pady=20)
+
+    imagen = ctk.CTkImage(
+        light_image=Image.open("campeon.jpg"),
+        size=(200, 200)
+    )
+
+    label_imagen = ctk.CTkLabel(
+        ventanaAprobado4,
+        text="",
+        image=imagen
+    )
+    label_imagen.pack(pady=20)
+
+    boton = ctk.CTkButton(
+    ventanaAprobado4,
+    text="Aceptar",
+    command=ventanaAprobado4.destroy
+    )
+    boton.pack(pady=20)
+
 
 
     
@@ -633,6 +700,32 @@ def abrir_ventana4():
     ventana4,
     text="Aceptar",
     command=lambda: reglametoredirect(ventana4,objetivos)
+    )
+    boton.pack(pady=20)
+def abrir_ventana5():
+
+    ventana5 = ctk.CTkToplevel(app)
+    ventana5.geometry("800x400")
+    ventana5.title("La linea del tiempo")
+
+    texto = ctk.CTkLabel(
+        ventana5,
+        text="skills a desbloquear",
+        font=("Arial", 40)
+    )
+    texto1 = ctk.CTkLabel(
+        ventana5,
+        text="increible, vamos a medio caminoun paso mas viejo, \n por último debemos estudiar las fechas importantes de la asignatura \n una vez leido todo, presiona el botón y avanza al quiz",
+        font=("Arial", 20)
+    )
+
+    texto.pack(pady=40)
+    texto1.pack(pady=40)
+    app.withdraw()
+    boton = ctk.CTkButton(
+    ventana5,
+    text="Aceptar",
+    command=lambda: reglametoredirect(ventana5,Fechas)
     )
     boton.pack(pady=20)
 def verificar_respuesta2(
@@ -1001,5 +1094,181 @@ def quiz3():
     )
 
     boton_verificar.pack(pady=20)
+def Fechas():
+
+    fecha = ctk.CTkToplevel(app)
+    fecha.geometry("800x600")
+    fecha.title("Fechas Importantes")
+
+    titulo = ctk.CTkLabel(
+        fecha,
+        text="Fechas Importantes",
+        font=("Arial", 30, "bold")
+    )
+    titulo.pack(pady=20)
+
+    texto = ctk.CTkLabel(
+        fecha,
+        text="revisa atentamente las fechas importantes",
+        font=("Arial", 20)
+    )
+    texto.pack(pady=20)
+
+    imagen = ctk.CTkImage(
+        light_image=Image.open("fechas.jpg"),
+        size=(500, 200)
+    )
+
+    label_imagen = ctk.CTkLabel(
+        fecha,
+        text="",
+        image=imagen
+    )
+
+    label_imagen.pack(pady=20)
+
+   
+    label_imagen.image = imagen
+
+    boton = ctk.CTkButton(
+        fecha,
+        text="Continuar",
+        command=lambda: reglametoredirect(fecha, quiz4)
+    )
+
+    boton.pack(pady=20)
+def verificar_respuesta4(
+    quiz,
+    respuesta1,
+    respuesta2,
+    respuesta3,
+):
+
+    correctas = 0
+
+    if respuesta1 == "01-06-26":
+        correctas += 1
+
+    if respuesta2 == "17-08-26":
+        correctas += 1
+
+    if respuesta3 == "06-07-26":
+        correctas += 1
+
+    if correctas < 2:
+        reglametoredirect(quiz, ventanaFracaso4)
+    else:
+        reglametoredirect(quiz, ventanaAprobado4)
+def quiz4():
+
+    quiz = ctk.CTkToplevel(app)
+    quiz.geometry("700x700")
+    quiz.title("Quiz Fechas Importantes")
+
+    titulo = ctk.CTkLabel(
+        quiz,
+        text="Quiz de Fechas Importantes",
+        font=("Arial", 28, "bold")
+    )
+    titulo.pack(pady=20)
+
+    
+    pregunta1 = ctk.CTkLabel(
+        quiz,
+        text="¿Cuándo es el 1er parcial?",
+        font=("Arial", 20)
+    )
+    pregunta1.pack(pady=10)
+
+    respuesta1 = ctk.StringVar(value="")
+
+    opciones1 = [
+        "01-06-26",
+        "06-07-26",
+        "10-08-26",
+        "17-08-26"
+    ]
+
+    for opcion in opciones1:
+
+        radio = ctk.CTkRadioButton(
+            quiz,
+            text=opcion,
+            variable=respuesta1,
+            value=opcion
+        )
+
+        radio.pack()
+
+    
+    pregunta2 = ctk.CTkLabel(
+        quiz,
+        text="¿Cuándo es el examen final?",
+        font=("Arial", 20)
+    )
+    pregunta2.pack(pady=20)
+
+    respuesta2 = ctk.StringVar(value="")
+
+    opciones2 = [
+        "01-06-26",
+        "17-08-26",
+        "06-07-26",
+        "10-08-26"
+    ]
+
+    for opcion in opciones2:
+
+        radio = ctk.CTkRadioButton(
+            quiz,
+            text=opcion,
+            variable=respuesta2,
+            value=opcion
+        )
+
+        radio.pack()
+
+    
+    pregunta3 = ctk.CTkLabel(
+        quiz,
+        text="¿Cuándo es el 2do parcial?",
+        font=("Arial", 20)
+    )
+    pregunta3.pack(pady=20)
+
+    respuesta3 = ctk.StringVar(value="")
+
+    opciones3 = [
+        "17-08-26",
+        "10-08-26",
+        "06-07-26",
+        "01-06-26"
+    ]
+
+    for opcion in opciones3:
+
+        radio = ctk.CTkRadioButton(
+            quiz,
+            text=opcion,
+            variable=respuesta3,
+            value=opcion
+        )
+
+        radio.pack()
+
+    boton = ctk.CTkButton(
+        quiz,
+        text="Verificar Quiz",
+        command=lambda:
+        verificar_respuesta4(
+            quiz,
+            respuesta1.get(),
+            respuesta2.get(),
+            respuesta3.get()
+        )
+    )
+
+    boton.pack(pady=30)
+
 
 app.mainloop()
