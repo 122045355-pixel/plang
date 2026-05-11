@@ -5,6 +5,25 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("green")
 
 app = ctk.CTk()
+def error(quiz):
+
+    aviso = ctk.CTkToplevel(quiz)
+    aviso.geometry("300x150")
+    aviso.title("Error")
+
+    texto = ctk.CTkLabel(
+        aviso,
+        text="Debes contestar todas las preguntas",
+        font=("Arial", 18)
+    )
+    texto.pack(pady=30)
+
+    boton = ctk.CTkButton(
+        aviso,
+        text="Aceptar",
+        command=aviso.destroy
+    )
+    boton.pack(pady=10)
 def reglametoredirect(ventana,nueva):
     ventana.destroy()
     nueva()
@@ -401,6 +420,9 @@ def verificar_respuesta1(
     respuesta3,
     
 ):
+    if respuesta1 == "" or respuesta2 == "" or respuesta3 == "":
+        error(quiz)
+        return
 
     correctas = 0
 
@@ -706,7 +728,7 @@ def abrir_ventana5():
 
     ventana5 = ctk.CTkToplevel(app)
     ventana5.geometry("800x400")
-    ventana5.title("La linea del tiempo")
+    ventana5.title("Skills a Desbloquear")
 
     texto = ctk.CTkLabel(
         ventana5,
@@ -734,7 +756,9 @@ def verificar_respuesta2(
     respuesta2,
     respuesta3,
 ):
-
+    if respuesta1 == "" or respuesta2 == "" or respuesta3 == "":
+        error(quiz)
+        return
     correctas = 0
 
     if respuesta1 == "40%":
@@ -960,6 +984,9 @@ def verificar_respuesta3(
     respuesta2,
     respuesta3,
 ):
+    if respuesta1 == "" or respuesta2 == "" or respuesta3 == "":
+        error(quiz)
+        return
 
     correctas = 0
 
@@ -1143,7 +1170,9 @@ def verificar_respuesta4(
     respuesta2,
     respuesta3,
 ):
-
+    if respuesta1 == "" or respuesta2 == "" or respuesta3 == "":
+        error(quiz)
+        return
     correctas = 0
 
     if respuesta1 == "01-06-26":
